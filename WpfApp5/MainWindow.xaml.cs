@@ -17,9 +17,7 @@ using System.Windows.Shapes;
 
 namespace WpfApp3._1
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
+
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -90,7 +88,7 @@ namespace WpfApp3._1
                 textBox.FontFamily = new FontFamily(fn);
             }
         }
-
+        /*
         private void Open_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog open = new OpenFileDialog();
@@ -110,6 +108,30 @@ namespace WpfApp3._1
         }
 
         private void Close_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+        */
+
+        private void OpenExecuted(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog open = new OpenFileDialog();
+            open.Filter = "Текстовые (*.txt)|*.txt|Все файлы (*.*)|*.*";
+            if (open.ShowDialog() == true)
+            {
+                textBox.Text = File.ReadAllText(open.FileName);
+            }
+        }
+
+        private void SaveExecuted(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog save = new SaveFileDialog();
+            save.Filter = "Текстовые (*.txt)|*.txt|Все файлы (*.*)|*.*";
+            if (save.ShowDialog() == true)
+                File.WriteAllText(save.FileName, textBox.Text);
+        }
+
+        private void ExitExecuted(object sender, RoutedEventArgs e)
         {
             Close();
         }

@@ -8,8 +8,9 @@
         mc:Ignorable="d"
       Title="SimpleTextEditor" Height="450" Width="800">
     <Window.CommandBindings >
-        <CommandBinding Command="Open" />
-        <CommandBinding Command="Save" />
+        <CommandBinding Command="local:MyCommands.Exit" Executed="ExitExecuted"/>
+        <CommandBinding Command="Open" Executed="OpenExecuted"/>
+        <CommandBinding Command="Save" Executed="SaveExecuted"/>
     </Window.CommandBindings>
 
     <Grid>
@@ -58,9 +59,9 @@
         <DockPanel Grid.Row="0" Grid.ColumnSpan="3">
             <Menu DockPanel.Dock="Top" VerticalAlignment="Top">
                 <MenuItem Header="Файл">
-                    <MenuItem x:Name="Open" Header="Открыть" Click="Open_Click" />
-                    <MenuItem x:Name="Save" Header="Сохранить" Click="Save_Click" />
-                    <MenuItem x:Name="Close" Header="Закрыть" Click="Close_Click" />
+                    <MenuItem x:Name="Open" Header="Открыть" Command="Open" />
+                    <MenuItem x:Name="Save" Header="Сохранить" Command="Save" />
+                    <MenuItem x:Name="Close" Header="Закрыть" Command="local:MyCommands.Exit" />
                 </MenuItem>
             </Menu>
         </DockPanel>
