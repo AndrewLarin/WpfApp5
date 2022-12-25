@@ -59,7 +59,7 @@ namespace WpfApp3._1
         {
             if (textBox != null)
             {
-                double fs = Convert.ToDouble(((sender as ComboBox).SelectedItem as TextBlock).Text);
+                double fs = Convert.ToDouble(((sender as ComboBox).SelectedItem as string));
                 textBox.FontSize = fs;
             }
         }
@@ -82,7 +82,7 @@ namespace WpfApp3._1
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            string fn = ((sender as ComboBox).SelectedItem as TextBlock).Text;
+            string fn = ((sender as ComboBox).SelectedItem as string);
             if (textBox != null)
             {
                 textBox.FontFamily = new FontFamily(fn);
