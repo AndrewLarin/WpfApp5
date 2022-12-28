@@ -23,8 +23,26 @@ namespace WpfApp3._1
         public MainWindow()
         {
             InitializeComponent();
+            themes.SelectedItem = 0;
+            //themes.SelectionChanged += ThemeChange; 
         }
+        /*
+        private void ThemeChange(object sender, SelectionChangedEventArgs e)
+        {
+            int styleIndex = styleBox.SelectedIndex; 
+            Uri uri = new Uri("White.xaml", UriKind.Relative); 
+                                                               
+            if (styleIndex == 1)
+            {
+                uri = new Uri("Dark.xaml", UriKind.Relative);
 
+            }
+            ResourceDictionary resource = Application.LoadComponent(uri) as ResourceDictionary;
+            Application.Current.Resources.Clear();
+            Application.Current.Resources.MergedDictionaries.Add(resource);
+
+        }
+        */
         private void BoldButton_Checked(object sender, RoutedEventArgs e)
         {
             textBox.FontWeight = FontWeights.Bold;
@@ -134,6 +152,22 @@ namespace WpfApp3._1
         private void ExitExecuted(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void themes_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int styleIndex = themes.SelectedIndex;
+            Uri uri = new Uri("White.xaml", UriKind.Relative);
+
+            if (styleIndex == 1)
+            {
+                uri = new Uri("Dark.xaml", UriKind.Relative);
+
+            }
+            ResourceDictionary resource = Application.LoadComponent(uri) as ResourceDictionary;
+            Application.Current.Resources.Clear();
+            Application.Current.Resources.MergedDictionaries.Add(resource);
+            //MessageBox.Show(styleIndex.ToString());
         }
     }
 }
