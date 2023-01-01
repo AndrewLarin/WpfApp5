@@ -23,12 +23,12 @@
         </Grid.RowDefinitions>
         <ToolBarTray Grid.Row="1" Background="#FFABABAB" Style="{DynamicResource ToolBarStyle}">
             <ToolBar  Margin="5" Padding="5" Style="{DynamicResource ToolBarStyle}">
-                <ComboBox  Margin="5" Padding="5" SelectedIndex="0" Width="200" SelectionChanged="ComboBox_SelectionChanged"
+                <ComboBox  x:Name="fonts" Margin="5" Padding="5" SelectedIndex="0" Width="200" 
                            ItemsSource="{DynamicResource fonts}" Style="{DynamicResource TextBoxStyle}">
 
                 </ComboBox>
                 <ComboBox x:Name="fontSize" Margin="5" Padding="5" SelectedIndex="0" Width="70"
-                          IsEditable="True" SelectionChanged="fontSize_SelectionChanged" ItemsSource="{DynamicResource sizes}"
+                          IsEditable="True" ItemsSource="{DynamicResource sizes}"
                            Style="{DynamicResource TextBoxStyle}">
                 </ComboBox>
             </ToolBar>
@@ -46,7 +46,10 @@
                 </StackPanel>
             </ToolBar>
         </ToolBarTray>
-        <TextBox x:Name="textBox" Grid.Row="2" Margin="5" Padding="5" FontSize="16" TextWrapping="Wrap" Style="{DynamicResource TextBoxStyle}">
+        <TextBox x:Name="textBox" Grid.Row="2" Margin="5" Padding="5" 
+                 FontSize="{Binding ElementName=fontSize, Path=Text}"
+                 FontFamily="{Binding ElementName=fonts, Path=Text}"
+                 TextWrapping="Wrap" Style="{DynamicResource TextBoxStyle}">
         </TextBox>
         <DockPanel Grid.Row="3" Background="#FF656060">
             <ComboBox x:Name="styleBox" Background="#FF656060" Style="{DynamicResource TextBoxStyle}" />
